@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> 
+    <script>
+        /*
+            类型转换
+                将一种数据类型转换为其它数据类型
+                将其它类型转换为（字符串、数值、布尔值）
+
+            转换字符串(根据数值去创建一个字符串)：
+                1. 调用toString()方法  
+                            由于null和undefined中没有toString()方法，所以它们调用toString()会报错
+                2. 调用String()函数转换为字符串 -- 适用于没有toString()的方法
+                            String()可以将unll和undefined转换为字符串
+            
+            数值类型转换：
+                1. 使用Number()函数转换   设用于任何类型
+                    转换情况：
+                        - 字符串：
+                            如果是个合法数字，会自动转换对应的数字
+                            反之不是个合法数字，会转换为NaN
+                            空串和空格都会转换为0
+                        - 布尔值：
+                            true -- 1
+                            false -- 0
+                        - null -- 0
+                        - undefined -- NaN
+
+                2. parseInt() --- 将一个字符串转换为一个整数
+                        - 它在解析时，会自左向右读取一个字符串，直到读取到所有有效的整数  只取有效整数位，如果一开始就不是数字 直接返回NaN
+                        - 也可以用它来进行数值取整
+                3. parseFloat() --- 将一个字符串转换为浮点数
+                        - 它在解析时，会自左向右读取一个字符串，直到读取到所有有效的小数位
+
+            布尔类型转换：
+                1. 使用Boolean()函数转换
+                    转换情况：
+                        - 数字：除了0和NaN转换为false，其余情况都是true
+                        - 字符串：空串是false，其余是true
+                        - null和undefined 都转换为false
+                        - 对象：通常都转换为true
+                    
+            总结：所有表示空性的没有的错误的值都会转换为false：0、NaN、空串、null、undefined、false
+        */
+        //字符串转换
+        let a = 10
+        console.log(typeof(a) , a)
+
+        a = a.toString()//"10"
+        console.log(typeof(a) , a)
+
+        let b = 33
+        console.log(typeof b , b)
+
+        b = String(b)
+        console.log(typeof b , b)
+
+        //数值转换
+        let a1 = '123'
+        console.log(typeof(a1) , a1)
+
+        a1 = Number(a1)
+        console.log(typeof(a1) , a1)
+
+        let b1 = '123px'
+        console.log(typeof(b1),b1)
+
+        b1 = parseInt(b1)
+        console.log(typeof(b1),b1)
+
+        //布尔类型转换
+        let a2 = 1
+        console.log(typeof(a2),a2)
+
+        a2 = Boolean(a2)
+        console.log(typeof(a2),a2)
+    </script>
+</body>
+</html>

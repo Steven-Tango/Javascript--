@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            函数定义的方式：
+                1. 函数声明
+                        function 函数名(参数){
+                            语句.....
+                        }
+                2. 函数表达式
+                        const 变量 = function(参数){
+                            语句.....
+                        }
+                3. 箭头函数
+                        (参数)=>{
+                            语句.....
+                        }
+        */
+
+        //函数申明方式
+        function fn() {
+            console.log("函数声明创建的函数")
+        }
+
+        //函数表达式
+        const fn2 = function () {
+            console.log("我是函数表达式创建的函数")
+        }
+
+        //箭头函数   一般也会对它赋值
+        const fn3 = () => {
+            console.log("我是箭头函数")
+        }
+
+        const fn4 = () => console.log("我是箭头函数简写")//只有一条语句的时候才可以省略花括号
+
+        fn()
+        fn2()
+        fn3()
+        fn4()
+    </script>
+</body>
+
+</html>

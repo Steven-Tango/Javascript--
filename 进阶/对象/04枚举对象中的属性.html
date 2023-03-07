@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            枚举属性：
+                - 指的是将对象中的所有属性全部取出
+            for-in语句：
+                语法：
+                    - for(let propName in 对象){
+                        语句....
+                    }
+                - for-in的循环体会执行多次，有几次属性就会执行多次
+                    注意：并不是所有属性都可以枚举，比如符号添加的属性
+                - 每次执行时，都会将一个属性名赋值给我们所定义的变量
+        */
+        let mySymbol = Symbol()
+        let obj = {
+            name: "张三",
+            age: 18,
+            gender:'男',
+            ['address']:'重庆',
+            [mySymbol]:'这是特殊属性',
+            [Symbol()]:'测试属性',
+            //对象嵌套
+            obj2:{
+                name:'李四'
+            }
+        }
+        for(let propName in obj){
+            //obj[propName]拿到属性值
+            console.log(propName,obj[propName])
+        }
+    </script>
+</body>
+</html>

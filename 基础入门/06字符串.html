@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            在JS中使用单引号或双引号来表示字符串（String）
+        */
+        let name = "Tang"
+        let gender = '男'
+
+        /*
+            转义字符
+                \t --> 制表符
+                \n --> 换行
+        */
+        let a = "我刚刚说的是：'你是什么意思'"
+        let b = "我刚刚说的是：\"你是什么意思\""
+        document.write(a)
+        document.write(b)
+
+        /*
+            模板字符串(反单引号): ``
+            模板字符串可以嵌套变量
+               
+        */
+        let content = `今天的
+                        天气
+                        真不错!!`
+
+        let str = `你好,${name}`
+        document.write(str)
+        /*
+            使用typeof检查字符串的时候会返回一个string
+        */
+    </script>
+</body>
+</html>

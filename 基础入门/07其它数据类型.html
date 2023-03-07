@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            布尔值（Boolean）  
+                - 逻辑判断
+                - true false
+                    1    0
+            
+            空值（Null）
+                - 表示空对象
+                - 值就是null
+                - 使用typeof检查时会返回一个object
+
+            未定义（Undefined）
+                - 声明变量后没有赋值
+                - 值就是undefined
+
+            符号（Symbol）
+                - 用来创建一个唯一标识
+                - 使用typeof会返回symbol
+
+            JS中原始值有7种
+                1.Number
+                2.BigInt
+                3.String
+                4.Boolean
+                5.Null
+                6.Undefined
+                7.Symbol
+                它们属于不可变类型，一旦创建就不能修该
+        */
+        let c = Symbol() //调用Symbol()创建了一个符号
+
+        let a = null
+        console.log(typeof a)  // 返回object
+    </script>
+</body>
+</html>

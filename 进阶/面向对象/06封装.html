@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            对面对象的特点：    
+                封装 继承 多态
+
+            1.封装
+                - 对象就是一个用来存储不同属性的容器
+                - 对象不仅要负责存储属性，还要负责数据的安全
+                - 直接添加在对象中的属性并不安全，因为它们可以被任意的修改
+                - 如何确保数据的安全：
+                    1.私有化数据（加#号）
+                        - 将需要保护的数据设置为私有，只能在类内部访问
+                    2.提供setter和getter方法开方对数据的操作
+                        - 属性设置私有，通过getter setter方法操作
+                            1.可以控制属性的读写权限
+                            2.可以在方法中对属性的值进行验证
+                            语法：
+                                get 属性名(){
+                                    return this.#属性
+                                }
+                                set 属性名(参数){
+                                    this.#属性=属性
+                                }
+                - 封装主要用来保证数据安全
+        */
+
+      class person {
+        //使用#号开头，变成了私有属性，私有属性只能在类内部访问
+        #address = "重庆";
+
+        #name;
+        #age;
+        #gender;
+
+        constructor(name, age, gender) {
+          this.#name = name;
+          this.#age = age;
+          this.#gender = gender;
+        }
+
+        sayHello() {
+          console.log(this.#name, this.#address);
+        }
+
+        //getter方法 读取属性
+        getName() {
+          return this.#name;
+        }
+        //setter方法  设置属性
+        setName(name) {
+          this.#name = name;
+        }
+        getAge() {
+          return (this.#age = age);
+        }
+        setAge(age) {
+          if (age >= 0) {
+            this.#age = age;
+          }
+        }
+
+        //新写法（推荐）
+        get gender(){
+            console.log("getter方法执行了")
+            return this.#gender
+
+        }
+        set gender(gender){
+            this.#gender = gender
+        }
+      }
+
+      const p1 = new person("唐杰", 22, "男");
+
+      //p1.age = -11
+      //p1.#name  访问不了
+
+      p1.getName();
+      p1.setName("张三");
+
+      p1.gender = "女"
+      console.log(p1.gender);
+    </script>
+  </body>
+</html>

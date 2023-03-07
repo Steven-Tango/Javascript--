@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变量内存结构</title>
+</head>
+
+<body>
+
+    <!-- 
+
+        变量内存结构
+
+            字面量存储在内存中，在内存中会开辟一个空间存放字面量和字面量的内存地址
+            变量存储在另一个空间，这个空间用来存储变量名和字面量的内存地址
+            声明变量后js会先去内存中寻找有没有字面量，没有的话就开辟内存空间存放，有的话直接引用字面量的内存地址
+
+        变量不存储任何值，存储的是内存地址
+     -->
+
+    <script>
+        let a = 80
+    </script>
+</body>
+
+</html>

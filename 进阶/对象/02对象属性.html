@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            属性名：
+                - 通常属性名就是一个字符串，属性名可以是任何值’
+                        属性名太特殊了，需要使用[]设置
+                        强烈建议属性名按照标识符的命名规范
+                - 也可以使用符号作为属性名
+                        使用symbol添加的属性，通常是那些不希望被外界访问的属性  
+                        通过符号添加的属性是不可更改类型，也不能被枚举
+                - 使用[]去操作属性时，可以使用变量
+
+            属性值：
+                - 可以是任意的数据类型 
+            使用typeof检测对象是返回Object2
+
+            in运算符：
+                - 检测对象中是否含有某个属性
+                - 属性名 in obj
+                - 有 -> true  没有 -> false
+        */
+        let obj = new Object()
+        obj.name = '张杰'
+        //obj.12344u1@@#40-9 = '呵呵'
+        obj['12344u1@@#40-9'] = '呵呵'
+
+
+        //使用符号作为属性名
+        //创建符号
+        let mySymbol = Symbol()
+        //添加数据
+        obj[mySymbol] = '马龙'
+        //取数据
+        console.log(obj[mySymbol])
+
+        //通过变量+[]方式存储数据
+        let address = "address"
+        obj[address] = '重庆'
+        console.log(obj)
+        console.log(obj[address])
+
+        //in运算符
+        console.log('name' in obj)
+        console.log(address in obj)
+        console.log('hah' in obj)
+    </script>
+</body>
+</html>

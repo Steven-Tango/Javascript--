@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+      /*
+            JS运行代码的模式又2种：
+                - 正常模式：
+                    1.语法检查并不严格，能不报错尽量不报错
+                    2.容易导致性能差
+                - 严格模式：
+                    1.禁止一些语法
+                    2.更容易报错
+                    3.提升性能
+            开启严格模式：
+                全局：'use strict'
+                局部：在函数种写这句话
+            - 实际开发中尽量使用严格模式，可以将一些隐藏问题消灭在萌芽阶段，也能提升性能
+        */
+      a = 10;
+      console.log(a); //a is not defined
+
+      //局部严格模式
+      function a() {
+        "use strict"; //函数的严格模式
+      }
+    </script>
+  </body>
+</html>

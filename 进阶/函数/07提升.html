@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            变量的提升
+                - 使用var声明的变量，会在所有代码执行前会被声明（没有赋值）
+                    所以我们可以在变量声明前访问变量
+            
+            函数提升
+                - 使用函数声明创建的函数，会在其它代码执行前被创建
+                    所以我们可以在函数声明前调用函数
+
+            let声明的变量实际上也会提升，但是在赋值之前，解释器会禁止访问该变量
+            变量和函数的提升也适用于函数作用域
+                比如：
+                    var a = 1
+                    function fn(){
+                        console.log(a)//undefined
+                        var a = 2
+                        console.log(a)//2
+                    }
+                    fn()
+                    console.log(a)//1
+        */
+
+        //变量提升
+        console.log(a)//undefined
+
+        var a = 10
+        
+
+        //函数提升
+
+
+        fn()//js解释器看到了function 会把函数提升，在调用之前就已经执行完了
+        function fn(){
+            alert('我是fn函数')
+        }
+        //fn() 会执行
+    </script>
+</body>
+</html>

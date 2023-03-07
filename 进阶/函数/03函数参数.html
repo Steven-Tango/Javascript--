@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            形式参数：
+                - 定义函数时，可以在函数中指定数量不等的形式参数（形参）
+                - 在函数中定义形参，就相当于在函数内部声明了对应的变量，但是没有赋值
+            实际参数：
+                - 在调用函数时，可以在函数的()中传递数量不等的实参
+                - 实参会赋值给形参
+            参数情况：
+                1. 如果实参和形参数量相同，则对应的实参赋值给形参
+                2. 如果实参大于形参，则多余的实参不会使用
+                3. 如果实参小于形参，则多余的形参赋值为undefined
+            参数类型：
+                - 在js中，不会检查参数类型，可以传递任何类型的值作为参数
+
+            定义参数时候 可以为形参指定默认值
+        */
+
+        function fn0(a, b) {
+            //这个参数中的a，相当于是let a
+            console.log(`a=${a}`)
+            console.log(`b=${b}`)
+        }
+        fn0(1, 10)//这个1就是实参 1->a  10->b  以此类推
+
+
+        /*
+            定义一个求任意两个数和的函数
+        */
+        function sum(a, b) {
+            console.log(`a+b= ${a + b}`)
+        }
+        sum(2, 4)
+
+        //用户输入2个数并计算
+        let num1 = +prompt("请输入一个数")
+        let num2 = +prompt("请输入另一个数")
+        function sum1(a, b) {
+            console.log(`a+b= ${a + b}`)
+        }
+        sum1(num1, num2)
+
+        //参数情况
+        //1. 实参==形参
+        function test1(a,b){
+            document.write(`a=${a},b=${b}`)
+        }
+        test1(1,8)
+
+        //2. 实参 > 形参
+        function test2(a,b){
+            document.write(`<br>a=${a},b=${b}`)
+        }
+        test2(10,80,4,"hello")//4和"hello"并不会使用
+        
+        //3. 实参 < 形参
+        function test2(a,b){
+            document.write(`<br>a=${a},b=${b}`)
+        }
+        test2(10)//b会赋值成undefined
+
+        const fn00 = (a,b)=>{
+            console.log(`a=${a}`)
+            console.log(`b=${b}`)
+        }
+        fn00(11,78)
+
+
+
+        //箭头函数参数
+        /*
+            当箭头函数只有一个参数时，可以省略括号
+        */
+        const fn2 = a=>{
+            console.log(`a=${a}`)
+        }
+        fn2(126,78)
+
+        /*
+            定义参数时候 可以为形参指定默认值  所有函数都可以
+                                     默认值会在没有对应的参数时生效
+        */
+        const fn3 = (a=74,b=56,c=32)=>{
+            console.log(`a=${a}`)
+            console.log(`b=${b}`)
+            console.log(`c=${c}`)
+        }
+        fn3(45)
+
+        
+        //对象作为参数
+        let obj ={
+            name:'张三',
+            age:14
+        }
+        function objFn(a){
+            console.log(a.name)
+            a.name = '李四'
+            console.log(a.name)
+        }
+        //传递实参时，传递的并不是变量本身，而是变量中的值
+        objFn(obj)
+        console.log(obj)
+
+        //函数每次调用时，都会重新创建默认值  
+        function objFn1(a={name:'唐杰'}){
+            console.log(`a=${a}`)
+            a.name='张杰'
+            console.log(`a=${a}`)
+        }
+        objFn1() //唐杰  张杰
+        objFn1() //唐杰  张杰   or 张杰  张杰  -- 第二次调用的时候 会创建一个新的默认值  它们指向的是不同对象  如果让a=obj 则指向的是同一个对象
+
+
+        
+
+        //函数作为参数
+        /*
+            在JS中 函数也是有一个对象（一等函数）
+                别的对象能做的事，函数也可以
+        */
+        function fn02(){
+            console.log("我是fn02")
+        }
+
+        function fn01(a){
+            console.log("a = ",a)
+            a()
+        }
+       //fn01(fn02)  // a指向的是fn02
+       //fn01(function(){
+        // console.log("我是匿名函数")
+       //})
+       fn01(()=>console.log("我是匿名函数"))
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        代码块：
+            - 用来对代码进行分组
+            - 使用 {} 来创建代码块
+        
+        let和var的区别：
+            - 在js中，使用let声明的变量具有块作用域
+            - 在代码块中声明的变量无法在代码块的外部访问
+            - 使用var声明的变量不具有作用域
+
+
+        流程控制语句：
+            1.条件判断语句
+                    IF语句：
+                        - 语法：
+                            if(条件表达式){
+                                语句...
+                            }
+                    注意：条件表达式不是数值则会自动转换布尔值在进行判断
+
+            2.条件分支语句
+                    IF-ELSE语句：
+                        - 语法：
+                            if(条件表达式){
+                                语句...
+                            }else{
+                                语句...
+                            }
+
+                    IF-ELSE IF-ELSE语句：
+                        - 语法：
+                            if(条件表达式){
+                                语句...
+                            }else if(条件表达式){
+                                语句...
+                            }else{
+                                语句...
+                            }
+                    注意：条件表达式结果为true，则执行当前if语句，执行完毕后语句结束，不在往后面执行
+                          一旦有执行的代码块，下边的条件都不会在继续判断了
+                          所以一定要注意代码书写顺序
+
+                    SWITCH语句（使用场景并不多）：
+                        - 语句：
+                            switch(表达式){
+                                case 值1:
+                                代码...
+                                break
+                                case 值2:
+                                代码...
+                                break
+                                case 值3:
+                                代码...
+                                break
+                                case 值4:
+                                代码...
+                                break
+                                default:
+                                break
+                            }
+                    注意：表达式会和值进行全等比较，break可以直接结束switch语句
+
+            3.循环语句
+                    while循环
+                        - 语法：
+                            while(条件表达式){
+                                语句...
+                            }
+                    do-while循环
+                        - 语法：
+                            do{
+                                语句...
+                            }while(表达式)
+                        注意：do-while是先执行、在判断
+                        do-while至少会执行一次
+                    for循环
+                        - 语法：
+                            for(初始化表达式;条件表达式;更新表达式){
+                                语句... 
+                            }
+                        - 执行流程：
+                            ① 执行初始化表达式，初始化变量
+                            ② 执行条件表达式，判断循环是否执行（true->执行 false->终止）
+                            ③ 判断结果是true，则执行循环体
+                            ④ 执行更新表达式
+                            ⑤ 重复②，直到判断为false为止 
+                    循环嵌套：
+                        在一个循环结构体中再放一个循环
+                        当循环嵌套发生的时候，外层循环执行一次，内层循环就会执行一个完整的周期
+                            比如说下面的嵌套循环：
+                                                外层循环执行一次，内层循环就会执行5次
+                        比如要求实现再网页中打印以下图案：
+                        *****
+                        *****
+                        *****
+                        *****
+                        *****
+                        for (let i = 0; i < 5;i++){
+                            for(let j = 0;j < 5;j++){
+                                document.write("*&nbsp;&nbsp;")     外层循环控制高度，内层循环控制宽度
+                            }                                              行            列
+                            document.write("<br>")
+                        }
+
+                        *
+                        **
+                        ***
+                        ****
+                        *****
+                           for (let i = 0; i < 5;i++){
+                            for(let j = 0;j < i + 1;j++){
+                                document.write("*&nbsp;&nbsp;")     
+                            }                                             
+                            document.write("<br>")
+                        }
+
+
+                        *****
+                        ****
+                        ***
+                        **
+                        *
+                           for (let i = 0; i < 5;i++){
+                            for(let j = 0;j < 5 - i;j++){
+                                document.write("*&nbsp;&nbsp;")     
+                            }                                             
+                            document.write("<br>")
+                        }
+            
+            4. break和continue
+                    - break
+                        - 用来终止switch和循环语句
+                        - 使用break后，当前循环会立即终止
+                        - 终止离它最近的循环
+                    - continue
+                        - 跳过当次循环
+                        
+                        
+     -->
+
+    <script>
+        /*
+            prompt()用来获取用户输入的内容
+        */
+        //练习：用户输入一个整数。判断是否是偶数还是奇数
+        let num = +prompt("请输入一个数")
+        if (num % 2 === 0) {
+            alert(`${num}是偶数`)
+        } else {
+            alert(`${num}是奇数`)
+        }
+        //从键盘上输入小明的期末成绩：成绩为100时，"奖励一台BNW" [80-99]奖励iphone [60-79]奖励参考书 其它情况时什么都没有
+        let score = +prompt("请输入小明的期末成绩")
+        if (score > 100) {
+            alert("输入有问题")
+        } else if (score === 100) {
+            alert("奖励一台BNW")
+        } else if (score >= 80) {
+            alert("奖励iphone")
+            alert("奖励一本参考书")
+        } else {
+            alert("什么奖励都没有")
+        }
+
+        /*
+            循环练习
+                1.假设银行存款的利率为5%，问1000元存多少年可以变成5000元        
+        */
+        let money = 1000
+        let day = 0
+        while (money < 5000) {
+            money *= 1.05
+            day++
+        }
+        alert(`需要${day}年`)
+
+        //求100以内所以有3的倍数（求它们个数和总和）
+        let count = 0
+        let res = 0
+        for (let i = 1; i <= 100; i++) {
+            if (i % 3 == 0) {
+                count++
+                res += i
+            }
+        }
+        alert(`100以内有${count}个数是3的倍数,总和为${res}`)
+
+        //思考：如何对上题目进行性能优化
+
+        /*
+            求1000以内的水仙花数
+        */
+        let c = 0
+        for (let n = 100; n < 1000; n++) {
+            let g = parseInt(n % 100 % 10)
+            let s = parseInt(n % 100 / 10)
+            let b = parseInt(n / 100)
+            if ((g ** 3) + (s ** 3) + (b ** 3) === n) {
+                c++
+                console.log(`1000以内的水仙花数:${n}`)
+            }
+        }
+        console.log(`1000以内的水仙花数有${c}个`)
+
+        /*
+            用户输入一个数。判断是否是质数
+                质数：只能被1和它本身整除
+        */
+        let n = +prompt("请输入一个数")
+        if (n < 0) {
+            alert("请输入>=0的数")
+        }
+        for (let i = 2; i < n; i++) {
+            if (n % i == 0) {
+                alert(`${n}不是质数`)
+                break
+            } else {
+                alert(`${n}是质数`)
+                break
+            }
+        }
+
+        //网页中输出99乘法表
+        for (let i = 1; i <= 9; i++) {
+            for (let j = 1; j < i + 1; j++) {
+                let res = i * j
+                document.write(`${j} x ${i} = ${res} &nbsp;`)
+            }
+            document.write("<br>")
+        }
+        //求100以内的所有质数
+
+        /*
+        console.time("质数练习")
+        for(let i = 2;i<=10000;i++){
+            let flag = true
+            for(let j = 2;j < i;j++){
+                if(i % j ==0){
+                    flag = false
+                }
+            }
+            if(flag){
+                console.log(i)
+            }
+        }
+        console.timeEnd("质数练习")
+        */
+        //性能优化
+        console.time("质数练习")
+        for (let i = 2; i <= 10000; i++) {
+            let flag = true
+            for (let j = 2; j <= i ** .5; j++) {
+                if (i % j == 0) {
+                    flag = false
+                    break
+                }
+            }
+            if (flag) {
+                console.log(i)
+            }
+        }
+        console.timeEnd("质数练习") 
+    </script>
+</body>
+
+</html>

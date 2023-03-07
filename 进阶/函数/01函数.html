@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            函数（Function）
+                - 函数也是对象
+                - 函数是存储代码的对象
+                - 它具有其它对象的所有功能
+                - 函数中可以存储代码，且可以在需要的时候调用这些代码
+            创建函数对象：
+                - 语法：
+                    function 函数名(){
+                            代码....
+                        }
+                - 调用函数: 执行函数中存储的代码
+                    - 语法：函数对象()
+                    
+            使用typeof检测函数对象时，返回function
+        */
+        function fn(){
+            console.log('Hello');
+            console.log('你好');
+        }
+        //console.log(fn);
+        //调用对象
+        fn()
+
+        console.log(typeof(fn))//返回function
+    </script>
+</body>
+</html>

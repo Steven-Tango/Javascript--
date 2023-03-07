@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            this
+                - 函数在执行时，JS解释器每次都会传递一个隐含的参数
+                - 这个参数就是this
+                - this会指向一个对象
+                    -- this指向的对象会根据函数调用的方式不同而不同
+                        1.函数形式调用，this指向window
+                        2.以方法的形式调用，this指向的是调用方法的对象(xxx.xx()  this指向xxx)
+                        ...
+                - 通过this可以在方法中引用调用方法的对象
+
+            箭头函数的this:
+                - 箭头函数没有自己的this，它的this是由外层作用域决定
+                - 它的this和它的调用方式无关
+                - 防止this不乱变化，比较为稳定
+
+        */
+
+      function fn() {
+        console.log(this);
+        console.log(this === window);
+      }
+
+      const obj = {
+        name: "tang",
+      };
+      obj.test = fn;
+
+      const obj2 = {
+        name: "hello",
+        test: fn,
+      };
+
+      //fn();  和window.fn()是一样的
+      obj.test(); //this指向tang    false
+      obj2.test(); //this指向hello   false
+
+      const obj3 = {
+        name: "沙僧",
+        sayHello: function () {
+          console.log("沙和尚");
+          console.log(this.name);
+        },
+      };
+
+      const obj4 = {
+        name: "唐大曾",
+        sayHello: function () {
+          console.log("唐曾");
+          console.log(this.name);
+        },
+      };
+
+      //为对象添加方法，可以打印名字
+      obj3.sayHello();
+      obj4.sayHello();
+
+
+
+      //箭头函数中的this
+      const fn2 = ()=>{
+        console.log('箭头函数中的this--->',this)
+      }
+      fn2()//window
+
+      const obj5 = {
+        name:'唐杰',
+        //前边fn2是属性名，后边是属性值，属性名和属性值相同，可以省略，只写一个
+        //fn2:fn2
+        fn2,
+        //sayHello:function(){}也可以简写为sayHello(){}
+        sayHello(){
+          console.log(this.name)
+
+          function t(){
+            console.log("t-->",this)
+          }
+          t()//window  以函数方式调用
+
+          const t2 = ()=>{
+            console.log("t2 --> ",this)
+          }
+          t2()//obj5
+        }
+      }
+      obj5.fn2()//window
+    </script>
+  </body>
+</html>

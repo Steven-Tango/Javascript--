@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            作用域（scope）
+                - 作用域指的是一个变量的可见区域 
+
+            作用于分类：全局作用域和局部作用域
+            全局作用域：
+                - 全局作用域在网页创建时创建，在关闭网页时销毁
+                - 所有直接编写到script标签中的代码都位于全局作用域中 
+                - 全局中的变量、函数....都可以在任意位置访问
+            局部作用域：
+                - 块作用域：
+                    -- 是一种局部作用域
+                    -- 块作用域在代码块执行时创建，代码块执行完毕销毁
+                    -- 在块作用域中，声明的变量是局部变量，只能在块内部访问，外部无法访问
+                - 函数作用域：
+                    -- 是一种局部作用域
+                    -- 函数作用域在函数调用时创建，调用结束后销毁
+                    -- 函数每次调用的时候都会产生一个全新的函数作用域
+                    -- 在函数中定义的变量是局部变量，只能在函数内部访问，外部无法访问
+
+            作用域链（就近原则）：
+                - 当我们使用变量时，js解释器会优先在当前作用域中寻找变量
+                    如果找到了，则直接使用
+                    如果没找到，则去上一层找，以此类推
+                    到全局作用域(最顶层)没有，则报错
+        */
+        let a = "变量a"
+        {
+            let b = '变量b'
+            {
+                //let b = '变量b'
+                console.log(b)//可以直接访问
+                console.log(a)//也可以访问
+            }
+            //console.log(b)//b is not defind
+        }
+        console.log(b)//b is not defind
+
+        //函数作用域
+        function fn(){
+            let a = 'fn中的变量a'
+            console.log(b)
+        }
+        fn()
+
+        //作用域链
+        let a1 = 10
+        {
+            let a1 = '第一个代码块a1'
+            {
+                let a1 = "第二个代码块的a1"
+                console.log(a1)
+            }
+        }
+    </script>
+</body>
+</html>                                                                                            
