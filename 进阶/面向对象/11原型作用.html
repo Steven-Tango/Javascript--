@@ -24,12 +24,42 @@
 
       /*
           所有的同类型对象它们的原型对象都是同一个  
+            也就意味着同类型对象的原型链是一样的
+
+          作用：
+            原型就相当于是一个公共的区域，可以被所有该类实例访问
+              可以将一个该类实例中，所有的公共属性（方法）统一存储到原型中
+              这样我们只需要创建一个属性，即可被所有实例访问
+              简单理解就是存储相同的属性和方法
+
+          在JS中继承就是通过原型来实现的（原型继承）
+              当我们继承时，子类的原型就是父类的实例
+         
+          在对象中有些值是对象独有的，比如属性（name，age，gender） 每个对象都应该都有自己的值，
+            但是有些值对于每个对象来说都是一样的，像各种方法，对于一样的值没有必要重复创建    
+
+            尝试函数的原型链是什么样子？
+            Object的原型链是什么样子？
         */
       console.log(p);
       console.log(p1);
       console.log(p === p1); //false
       console.log(p.__proto__ === p1.__proto__); //true
       console.log(p.__proto__ === d.__proto__); //false
+
+      //体验JS中的原型继承
+      class Animal{
+
+      }
+
+      class Cat extends Animal{
+
+      }
+
+      //cat --> Animal实例 --> object --> Object原型 --> null
+      const cat = new Cat()
+      
+      console.log(cat.__proto__.__proto__.__proto__.__proto__)
     </script>
   </body>
 </html>
