@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const arr = ["张三", "李四", "王五", "老赵"];
+
+      /*
+              arr和arr2都指向的是同一个对象
+              修改arr2会影响arr的结果
+            */
+
+      //复制必须要产生新的对象
+
+      //const arr2 = arr
+      //console.log(arr2)
+
+      //如何复制一个对象
+      //当调用slice()时，会产生一个新的数组对象，从而完成对数组的复制
+      const arr3 = arr.slice();
+      console.log(arr);
+      console.log(arr3);
+      console.log(arr3 === arr);
+
+      /*
+                浅拷贝(shallow copy)
+                    - 通常对对象的拷贝是浅拷贝
+                    - 只对对象的浅层复制（只复制一层）
+                    - 如果对象中存储的数据是原始值，那么拷贝的深浅不重要
+                    - 浅拷贝只会对对象本身复制，不会复制对象中的属性或元素
+
+                深拷贝(deep copy)
+                    - 不仅要复制对象本身，也要复制对象中的属性和元素
+                    - 因为性能问题，通常情况下不太使用深拷贝
+            */
+
+      //创建一个数组
+      const arrs = [{ name: "张三" }, { name: "李四" }];
+      const arrs1 = arrs.slice(); //浅拷贝
+      //此时只复制了数组对象，数组中的元素对象没有复制，从而当修改arrs1数组中的元素对象时，也会改变arrs中的元素对象中的数据
+
+      //structuredClone() -- 深拷贝
+      const arrs2 = structuredClone(arrs);
+      console.log(arrs);
+      console.log(arrs2);
+
+      /*
+                ... (展开运算符)
+                    - 可以将一个数组中的元素展开到另一个数组中或作为函数的参数传递
+                    - 也可以对数组进行浅复制
+            */
+      //const arr4 = [arr[0],arr[1],arr[2]]//太麻烦了
+      const arr4 = ["张王", ...arr]; //吧arr中的元素放到新数组中
+      console.log(arr4);
+
+      function sum(a, b, c) {
+        return a + b + c;
+      }
+      const arr5 = [10, 20, 30];
+      //作为参数传递
+      let res = sum(...arr5);
+      console.log(res);
+
+      /*
+            对象的深复制也是用structuredClone()方法
+            对象的浅复制:
+                - Object.assign(目标对象,被复制的对象)
+                - 将被复制的对象中的属性复制到目标对象中，并将目标对象返回
+                - 如果有重复的属性，后边的会替代前边的
+                - 也可以用展开运算符对对象进行复制
+      */
+      const obj = { name: "唐杰", age: 22 };
+
+      const obj2 = Object.assign({}, obj);
+
+      const obj3 = { address: "重庆", /*age:21,*/ ...obj, age: 21 }; //将obj中的属性在新对象中展开
+      //注意：只用展开运算符进行对对象复制时候，遇到相同属性，obj在后，obj优先，相同属性在obj后边，后边优先
+      console.log(obj2);
+      console.log(obj == obj2); //false
+    </script>
+  </body>
+</html>
