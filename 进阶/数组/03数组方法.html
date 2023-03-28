@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-
-        /*
+      /*
             Array.isArray() 
                 -- 检查一个对象是否是数组
 
@@ -50,32 +49,73 @@
                         3.如果不写参数，可以对数组浅拷贝（浅复制）
         */
 
-        let arr = ['唐杰',12,false,null,78,'唐杰']
-        let arr1 = [1, "hello", true, null, { name: "tangjie" }, () => {}];
+      let arr = ["唐杰", 12, false, null, 78, "唐杰"];
+      let arr1 = [1, "hello", true, null, { name: "tangjie" }, () => {}];
 
-        //at()
-        console.log(arr.at(-2))//null
+      //at()
+      console.log(arr.at(-2)); //null
 
-        //concat
-        let resArr = arr.concat(arr1,["张三","李四"])
-        console.log(resArr)
+      //concat
+      let resArr = arr.concat(arr1, ["张三", "李四"]);
+      console.log(resArr);
 
-        //indexOf
-        let resIndexOf = arr.indexOf(12)
-        console.log(resIndexOf)
+      //indexOf
+      let resIndexOf = arr.indexOf(12);
+      console.log(resIndexOf);
 
-        //lastIndexOf
-        let resLastIndexOf = arr.lastIndexOf("唐杰",3)
-        console.log(resLastIndexOf)
+      //lastIndexOf
+      let resLastIndexOf = arr.lastIndexOf("唐杰", 3);
+      console.log(resLastIndexOf);
 
-        //join
-        //let resJoin = arr.join()    // ['唐杰',12,false,null,78,'唐杰'] --> 唐杰,12,false,null,78,唐杰
-        let resJoin = arr.join('@')    // ['唐杰',12,false,null,78,'唐杰'] --> 唐杰@12@false@@78@唐杰
-        console.log(resJoin)
+      //join
+      //let resJoin = arr.join()    // ['唐杰',12,false,null,78,'唐杰'] --> 唐杰,12,false,null,78,唐杰
+      let resJoin = arr.join("@"); // ['唐杰',12,false,null,78,'唐杰'] --> 唐杰@12@false@@78@唐杰
+      console.log(resJoin);
 
-        //slice
-        let resSlice = arr.slice(0,2)
-        console.log(resSlice)
+      //slice
+      let resSlice = arr.slice(0, 2);
+      console.log(resSlice);
+
+      /*
+            数组补充常用方法：（破坏性方法）
+                push()
+                    - 向数组的末尾添加一个或多个元素并返回新数组的长度
+                pop()
+                    - 删除并返回数组中最后一个元素
+                unshift()
+                    - 向数组的开头添加一个或多个元素并返回新的长度
+                shift()
+                    - 删除并返回数组中第一个元素
+                splice()
+                    - 可以删除、添加、替换数组中的元素
+                    - 参数：
+                        1. 删除的起始位置
+                        2. 删除的数量
+                        3. 要插入的元素
+                    - 返回值：
+                        1. 返回被删除的元素
+                reverse()
+                    - 反转数组
+        */
+
+      const arr6 = ["张三", "李四", "王五", "赵肖"];
+      console.log("原数组：", arr6);
+      //push()添加数组并拿到新数组返回的长度
+      let arr6Length = arr6.push("小李", 66);
+      console.log("新数组的长度", arr6Length);
+      console.log("push后的数组", arr6);
+
+      //pop()删除元素并返回删除的元素
+      let arr6Element = arr6.pop()
+      console.log("删除前的数组",arr6)
+      console.log("拿到删除的数组",arr6Element)
+
+    //自己练习splice方法
+
+
+    //reverse()
+    let a = ["a","b","c","d"]
+    console.log(a.reverse())
     </script>
-</body>
+  </body>
 </html>
