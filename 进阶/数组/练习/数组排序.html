@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        练习
+          有一个数组 [9,1,3,2,8,0,5,7,6,4]
+          对它进行排序 -- 升序
+      */
+
+
+      const arr = [9,1,3,2,8,0,5,7,6,4];
+      
+      //冒泡排序
+      /*
+        思路一：
+              9,1,3,2,8,0,5,7,6,4
+              - 比较相邻的两个元素，然后根据大小来决定是否是交换他们的位置
+              - 速度最慢的排序方式，但是简单
+      */
+      for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = 0; j < arr.length - i - 1; j++) {
+          if (arr[j] > arr[j + 1]) {
+            // 利用数组解构赋值 交换j和j+1
+            [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
+          }
+        }
+      }
+      console.log(arr)
+      /*
+      选择排序
+        思路二:
+          - 取出一个元素，将其他元素喝改元素比较，如果其他元素比改元素小，进行交换位置
+      */
+      for(let i=0;i<arr.length;i++){
+        for(let j=i+1;j<arr.length;j++){
+          let temp = []
+          //前边的数大于后边的数，进行交换位置
+          if(arr[i]>arr[j]){
+            //交换位置
+            temp = arr[j]
+            arr[j] = arr[i]
+            arr[i] = temp
+          }
+        }
+      }
+      console.log(arr)
+    </script>
+  </body>
+</html>
