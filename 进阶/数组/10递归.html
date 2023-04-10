@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            递归：
+                - 调用自身函数称为递归
+                - 递归的作用和循环的作用基本一致
+        */
+
+        //创建一个函数，求任意数的阶乘
+        /*
+            1! 1
+            2! 1x2
+            3! 1x2x3
+            ....
+        */
+        function jieCheng(num){
+            //创建变量记录结果
+            let result = 1;
+            for(let i = 2;i <= num;i++){
+                result *= i;
+            }
+            //返回结果
+            return result;
+        }
+        let result = jieCheng(10)
+        console.log(result)
+
+        //通过递归来解决
+        /*
+            求5！= 4! x 5
+              4! = 3! x4
+              3! = 2! x3
+              2! = 1! x2
+              1! = 1
+
+            递归的核心思想是吧一个大问题拆分成一个小问题，小问题解决了大问题就解决了
+
+            编写递归函数一定要包含2个条件：
+                1.基线条件 -- 递归的终止条件
+                2.递归条件 -- 如何对问题进行拆分
+        */
+        function jc(num){
+            //设置基线
+            if(num===1){
+                return 1
+            }
+
+            //递归条件
+            /*
+                num! = (num-1) * num
+            */
+            return jc(num-1)*num;
+        }
+        const res = jc(5)
+
+        /*
+            jc(5)
+                - return jc(4)*5
+                - return jc(3)*4
+                - return jc(2)*3
+                - return jc(1)*2
+                - return 1
+        */
+
+        console.log(res)
+
+        /*
+            性能差，占内存，实际开发中尽量使用循环，少用递归，只在一些使用循环比较麻烦的时候，可以使用递归
+        */
+    </script>
+</body>
+</html>
