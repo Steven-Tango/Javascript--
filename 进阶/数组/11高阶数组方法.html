@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        sort()  破坏性方法  对所有元素转换为字符串 然后通过Unicode编码排序
+          - 用来对数组进行排序（会改变原数组）
+          - sort默认会将数组升序排序
+            注意:sort默认会按照Unicode编码进行排序，所以通过sort对数字排序，
+            可能会得到一个不正确的结果
+          参数：
+            传递一个回调函数，通过回调函数来指定排序规则
+            (a,b)=>a-b) 升序
+            (a,b)=>b-a) 降序
+
+        forEach()
+          - 遍历数组
+          - 需要回调函数作为参数,这个回调函数会被调用多次(数组中，有几个元素就调用几次)
+            每次调用，都会将数组中的数据作为参数传递
+          - 回调函数中又三个参数
+              element -- 当前元素
+              index   -- 当前元素索引
+              array   -- 被遍历的数组
+
+        filter()
+          - 将数组中符合条件的元素保存的新数组中返回
+          - 需要回调函数作为参数，会为每一个元素去调用回调函数，并根据返回值来决定是否将元素添加的新数组中
+          - 参数和forEach()中的参数一样的
+
+        map()
+          - 根据当前数组生成新数组
+          - 需要回调函数作为参数，回调函数的返回值会称为新数组中的元素
+          - 参数和forEach()中的参数一样的
+
+        reduce()
+          - 可以用来将一个数组中的所有元素，整合为一个值
+          参数：
+            1.回调函数，通过回调函数来指定合并的规则
+            2.可选参数，初始值
+          
+      */
+      let arr = ["a", "c", "e", "f", "b", "d"];
+      arr = [1, 0, 6, 4, 8, 7, 5, 10];
+
+      //console.log(arr)
+
+      console.log(arr.sort((a, b) => a - b)); //升序
+      console.log(arr.sort((a, b) => b - a)); //降序
+
+      arr = ["张三", "李四", "王五", "赵老二"];
+
+      // arr.forEach((element,index,array)=>{
+      //console.log(4)
+      //  console.log(element,index,array)
+      //})
+
+      arr.forEach((element, index) => console.log(index, element));
+
+      arr = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+      //获取数组中的所有偶数
+      let res = arr.filter((ele) => ele % 2 === 0);
+
+      console.log(res);
+
+      res = arr.map((ele) => ele * 2);
+
+      console.log(res);
+      //将一下数组插入到网页中
+      arr = ["唐杰", "张杰", "王杰", "李连杰"];
+
+      let reslut = arr.map((ele) => "<li>" + ele + "</li>");
+      console.log(reslut);
+
+      arr = [1, 2, 3, 4, 5, 6, 7, 8];
+      res = arr.reduce((a, b) => {
+        /*
+          a = 1  b = 2
+          a = 3  b = 3
+          a = 6  b = 4
+          ......
+        */
+        console.log(a, b);
+        return a + b;
+      });
+      console.log(res);
+      //设置初始值
+      res = arr.reduce((a, b) => a + b, 10);
+      console.log(res);
+    </script>
+  </body>
+</html>
