@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            对象序列化
+                - JS中的对象使用时，都是存在计算机的内存中
+                - 序列化指的是将对象转换为一个可以存储的格式
+                        在JS中对象的序列化通常是将一个对象转换为字符串（JSON字符串）
+
+                - 序列化作用(对象转换为字符串的作用)：
+                    - 对象转换为字符串后，可以将字符串在不同的语言之间进行传递，甚至人可以直接对字符串进行读写操作。
+                      使得JS对象可以在不同语言之间进行传递
+                    - 用途：
+                        1.作为数据交换的格式
+                        2.用来编写配置文件
+                
+                - 如何进行序列化
+                    -- 在JS中有个工具类 JSON （JavaScript Object Notation）-- JS对象表示法
+                    -- JS对象序列化后会转换一个字符串,这个字符串我们称为JSON字符串
+
+                - 也可以手动的编写JSON字符串
+                - 编写JSON的注意事项：
+                    1.JSON字符串又两种类型：
+                        JSON对象{}
+                        JSON数组[]
+                    2.JSON的属性名必须要使用双引号引起来(提升通用性，因为其它语言中单引号不一定是字符串)
+                    3.JSON中支持的数据类型
+                        - 数字（Number）
+                        - 字符串（String） 必须使用 ""
+                        - 布尔值（Boolean）
+                        - 空值（Null）
+                        - 对象（Object {}）
+                        - 数组（Array []）
+
+                        函数方法什么的都不支持
+
+                    4.JSON中的格式和JS对象的格式基本一致
+                        注意：JSON字符串中如果属性是最后一个，则不要加逗号,
+                              有时候会把JSON字符串叫做JSON对象，但是实际上它不是对象，而是JSON字符串
+        */
+      const obj = {
+        name: "张三",
+        age: 19,
+      };
+
+      //将obj转换为JSON字符串
+      const str = JSON.stringify(obj); //JSON.stringify()将一个对象转换为JSON字符串
+      console.log(obj);
+      console.log(str); //{"name":"张三","age":19}
+      console.log(typeof str); //String
+
+      //将JSON字符串转换成对象
+      const obj2 = JSON.parse(str); //JOSN.parse()将JSON格式的字符串转换成对象
+      console.log(obj2); //{name: '张三', age: 19}
+      console.log(typeof obj2); //object
+      //obj和obj2不等，obj2属于对obj的深复制
+      console.log(obj === obj2); //false
+
+      //手动编写JSON字符串
+      const str2 = '{"name":"tangjie","age":18}';
+      console.log(str2);
+
+      const str3 = '{}'
+      const str4 = '[]'
+    </script>
+  </body>
+</html>
