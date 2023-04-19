@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            数组解构赋值
+    */
+
+      const arr = ["张三", "李四", "王五"]; //解构赋值
+
+      //分别给abc赋值
+      //let a, b, c;
+      //[a, b, c] = arr;
+      let [a, b, c, d] = ["小儿", "大二", "阿萨", "萨拉"]; //声明同时解构
+      console.log(a, b, c, d);
+
+      //d=d 表示如果d没有值的时候，就用之前的值，最近有赋值就用最近赋值的
+      [a, b, c, d = d] = [1, 2, 3];
+      console.log(a, b, c, d);
+
+      //1-->n1 2-->n2,4,5,6-->n3 n3是个数组
+      let [n1, n2, ...n3] = [1, 2, 3, 4, 5, 6]; //解构数组时候，可以使用...来设置获取多个元素
+
+      //通过解构赋值，可以快速交换两个变量的值
+      let a1 = 10;
+      let a2 = 20;
+      (65)[(a1, a2)] = [a2, a1]; //右边的[a2,a1]是新建的数组
+      console.log("a1=", a1);
+      console.log("a2=", a2);
+
+      /*
+        数组中可以存储任意类型的数据
+            数组中放数组--> 二维数组
+      */
+      let arr2 = [
+        ["张三", "男", 17],
+        ["李四", "男", 26],
+      ];
+      for (let stu of arr2) {
+        for (let val of stu) {
+          console.log(val);
+        }
+      }
+
+      //二维数组解构
+      let [[name, age, gender], arr3] = arr2;
+      console.log(name, age, gender);
+      console.log(arr3);
+
+      //console.log(arr2)
+
+      /*
+        对象解构赋值
+      */
+
+      const obj = { name1: "张三", age1: 19, gender1: "男" };
+
+      //let {names,ages,genders} = obj;//声明变量并解构对象赋值
+      //写法二先声明，在解构
+      let name1, age1, gender1;
+      //以{}开头js区分不出这是代码块还是在解构赋值   解决办法就是加上()
+      ({ name1, age1, gender1 } = obj);
+      console.log(name1, age1, gender1);
+
+      let {address} = obj//没有属性返回undefined
+      console.log(address)
+
+      //注意：变量名要与属性名一致,但是太麻烦了，不灵活，所以解决办法就是取别名，也可以取别名的同时进行设置默认值、
+      let {name1:Name,age1:Age,gender1:Gender,address:Address="重庆"} = obj;
+      console.log(Name,Age,Gender,Address);
+    </script>
+  </body>
+</html>
