@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            Math
+                - Math是一个工具类
+                - Math中为我们提供了数学运算相关的一些常量和方法
+
+            常用方法
+                - Math.abs() 求一个数的绝对值
+                - Math.min() 求多个值中的最小值
+                - Math.max() 求多个值中的最大值
+                - Math.pow() 求x的y次幂
+                - Math.sqrt() 求一个数平方根
+
+            取整：
+                - Math.floor()  向下取整（向小的取）
+                - Math.ceil()   向上取整（向大的取）
+                - Math.round()  四舍五入
+                - Math.trunc()  直接去除小数位
+
+            生成随机数
+                - Math.random() 返回一个0-1(包括0，不包括1)之间的伪随机数
+                                                计算机中的随机数都是伪随机数
+                                                随机的数字都是通过电脑计算生成的，时间变了，伪随机数也就变了  真随机数(没有电脑参与，不可控的)
+
+        */
+
+      //实验结果并没  有产生0这个数
+      for (let i = 0; i < 100000; i++) {
+        let res = Math.random(); /*.toFixed(2)*/
+        if (res === 0) {
+          console.log(res);
+        }
+      }
+
+      //生成0-100之间的随机数
+      //使用Math.floor()取整的话，需要+1操作 Math.floor(Math.random()*x+1)
+      for (let i = 0; i <= 10; i++) {
+        let res = Math.round(Math.random() * 100);
+        console.log(res);
+      }
+
+      //生成x-y之间的随机数
+      //Math.round(Math.random()*(y-x) + x)
+      //生成50-80之间的随机数
+      let arr = [];
+      for (let i = 0; i < 50; i++) {
+        let res = Math.floor((Math.random() * 30) + 51);//(50,80]
+        if (res == 80) {
+          arr.push(res);
+        }
+      }
+      console.log(arr);
+    </script>
+  </body>
+</html>
