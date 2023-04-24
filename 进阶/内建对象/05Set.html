@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            Set
+                - 用来创建一个集合(本质上和Map差不多)
+                - 功能和数组类似，不同点是Set中不能存储重复的数据（只有这一个区别）
+            
+            使用方式
+                - new Set()
+                - new Set([...])
+            
+            方法
+                - size() 获取数量
+                - add() 添加数据
+                - has() 检查元素
+                - delete() 删除元素
+
+        */
+      //创建一个Set
+      const set = new Set();
+
+      //添加数据
+      set.add("hello");
+      set.add(20);
+      set.add(20); //添加不成功
+
+      console.log(set);
+
+      for (let item of set) {
+        console.log(item);
+      }
+
+      //数组去重
+      const arr = [1, 2, 4, 5, 6, 7, 8, 7, 7, 8, 9, 9, 5, 4, 0];
+      const set2 = new Set(arr);
+      console.log([...set2]);
+    </script>
+  </body>
+</html>
