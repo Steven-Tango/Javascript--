@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            Map
+                - Map用来存储键值对结构的数据(key-value)
+                - Object中存储的数据就是键值对结构
+
+            Map和Object的区别
+                - Object中属性名只能是字符串或符号，如果传递了其它类型的属性名
+                    JS解释器会自动转换成字符串
+                - Map中任何类型的值都可以称为数据中的key
+                    map.size() 获取map中键值对的数量
+                    map.set(key,value) 向map中添加键值对
+                    map.get(key) 根据key获取map中的键值对
+                    map.delete(key) 根据key删除对应的value
+                    map.has(key) 检查map中是否包含指定键
+                    map.clear() 清空全部键值对数据
+
+            Map和数组的转换
+        */
+
+      const obj2 = {};
+      const obj = {
+        name: "ttt",
+        age: 12,
+        [Symbol()]: "haha",
+        [obj2]: "ta",
+      };
+      console.log(obj); //{name: 'ttt', age: 12, [object Object]: 'ta', Symbol(): 'haha'}
+
+      //创建Map
+      const map = new Map();
+
+      //添加数据
+      map.set("name", "张三");
+      map.set(obj2, "哈哈哈");
+      map.set(undefined, "哟哟哟");
+
+      //取数据
+      map.get("name");
+      map.get(undefined);
+
+      //删除数据
+      map.delete(undefined);
+
+      //清除数据
+      map.clear();
+
+      //检查key在map是否存在
+      map.has(undefined); //false
+
+      console.log(map);
+
+      //Map和Arrary
+      const myMap = new Map();
+      myMap.set("name", "张三");
+      myMap.set("age", 19);
+      myMap.set({}, "FN");
+
+      //将myMap转换为数组
+      //const arr = Array.from(myMap);//[["name","张三"],["age",19]]转换成数组后是一个二维数组
+      const arr = [...myMap];
+      console.log(arr);
+
+      //将数组转换为map
+      const myMap1 = new Map([["name","张"],["age",29],[{},()=>{}]]);
+      console.log(myMap1);
+
+
+      //Map遍历
+      for(let [key,value] of myMap){
+        //利用解构赋值获取数组中的元素
+        //let [key,value] = entry;
+        console.log(key,value);
+      }
+      map.forEach((key,value)=>{console.log(key,value)});
+
+      /*
+        方法
+            map.keys() - 获取map中所有的key
+            map.values() - 获取map中的所有value
+            map.entries() - 获取map中的所有键值对
+      */
+    </script>
+  </body>
+</html>
