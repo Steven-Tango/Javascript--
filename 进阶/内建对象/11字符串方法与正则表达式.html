@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            split()
+                - 可以根据正则表达式来对一个字符串进行拆分
+            search()
+                - 可以搜索符合正则表达式的内容第一次在字符串中出现的位置
+            replace()
+                - 可以根据正则表达式替换字符串中指定的内容
+            match()
+                - 根据正则表达式去匹配字符串中符合要求的内容
+                - 会返回一个数组
+            matchAll()
+                - 根据正则表达式去匹配字符串中符合要求的内容（必须设置g 全局配置）
+                - 返回一个迭代器
+                    for of循环进行遍历即可
+        */
+      let str = "a@b@c@d@e@f";
+      let result = str.split("@");
+      console.log(result);
+
+      str = "张三abc李四aec王五";
+      result = str.split(/a[be]c/);
+      console.log(result);
+
+      str = "dasdhk13996141348dajlf13368131720ahdlfjla15826129675hdkfad";
+      result = str.search(/1[3-9]\d{9}/);
+      console.log(result);
+
+      result = str.replace(/1[3-9]\d{9}/g, "替换手机号");
+      console.log(result);
+
+      str = "dasdhk13996141348dajlf13368131720ahdlfjla15826129675hdkfad";
+      result = str.match(/1[3-9]\d{9}/g);
+      result = str.matchAll(/1[3-9]\d{9}/g); //必须加上全局g
+      for (let item of result) {
+        console.log(item);
+        console.log(item[0]);
+      }
+      console.log(result);
+    </script>
+  </body>
+</html>
