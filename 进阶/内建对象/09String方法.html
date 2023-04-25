@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            字符串
+                - 字符串其本质就是一个字符数组
+                - "Hello" -- ['H','e','l','l','o']
+                - 字符串很多方法和数组是非常类似的
+                - 属性和方法：
+                    length 获取字符串的长度
+                    字符串[索引] 获取指定位置的字符串
+                    str.at()
+                        - 根据索引获取字符，可接受负索引
+
+                    str.charAt()
+                        - 根据索引获取字符
+
+                    str.concat()
+                        - 用来连接2个或多个字符串
+
+                    str.includes()
+                        - 用来检查字符串是否包含某个内容
+                            有 返回True
+                            没有 返回false
+
+                    str.indexOf()/str.lastIndexOf()
+                        - 查询字符串是否包含某个内容
+
+                    str.endsWith()/str.startsWith()
+                        - 检查一个字符串是否以指定内容开头/结尾
+                    
+                    str.padStart()/padEnd()
+                        - 通过添加指定的内容，使字符串保持某个长度
+
+                    str.replace()
+                        - 使用新的字符串替换一个指定内容
+                    
+                    str.replaceAll()
+                        - 使用新的字符串替换所有指定内容
+
+                    str.slice()/str.substring
+                        - 截取字符串
+
+                    str.split()
+                        - 将一个字符串拆分为一个数组
+                    
+                    str.LowerCase()/str.UpperCase()
+                        - 将字符串转换为小写或大写
+                    
+                    str.trim()/str.trimStart()/str.trimEnd()
+                        - 去除字符串的前后空格/开始空格/结束空格
+        */
+      let str = "Hello";
+      // console.log(str.length);
+      //for (let i of str) {
+      //  console.log(i);
+      //}
+
+      //console.log(str.at(-2));
+
+      //console.log(str.charAt(0));
+
+      str = "hello how are you ";
+      console.log(str.includes("tom")); //false
+      console.log(str.includes("hello")); //false
+      console.log(str.includes("hello", 12)); //false 第二个参数表示指定查询的起始位置
+
+      console.log(str.endsWith(" ")); //true
+      console.log(str.startsWith(" ")); //false
+
+      str = "100";
+      console.log(str.padStart(7, 0));
+      console.log(str.padEnd(5, 0));
+
+      str = "hello how are you ";
+      console.log(str.replace("hello", "HELLO"));
+      console.log(str.replaceAll("ho", "HELLO"));
+
+      console.log(str.slice(4, 9));
+      console.log(str.substring(4, 9));
+
+      str = "abc@wsx@edc@rfv";
+      console.log(str.split("@"));//['abc', 'wsx', 'edc', 'rfv']
+
+      str = "   a b c   ";
+      console.log(str.trim())
+    </script>
+  </body>
+</html>
