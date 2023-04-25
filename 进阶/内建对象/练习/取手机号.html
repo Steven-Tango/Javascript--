@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            dasdhk13996141348dajlf13368131720ahdlfjla15826129675hdkfad
+            从以上字符串中取出隐藏的手机号码
+        */
+      let str = "dasdhk13996141348dajlf13368131720ahdlfjla15826129675hdkfad";
+      let reg = /1[3-9]\d{9}/g;
+      let reg1 = /(1[3-9]\d)\d{4}(\d{4})/g;
+      let res = reg1.exec(str);
+      while (res) {
+        console.log(res[1], "****", res[2]);
+        res = reg1.exec(str);
+      }
+      /*
+      显示效果：
+        139 **** 1348
+        133 **** 1720
+        158 **** 9675
+      */
+    </script>
+  </body>
+</html>
