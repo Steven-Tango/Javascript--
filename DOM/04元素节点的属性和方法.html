@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="box1">
+      我是box1
+      <span class="s1">我是s1</span>
+      <span class="s1">我是s1</span>
+    </div>
+    <span class="s1">我是s1</span>
+
+    <script>
+      /*
+            div元素的原型链
+                HTMLDivElement -> HTMLElement -> Element -> Node -> ....
+
+
+            通过元素节点对象获取其他节点的方法
+                element.childNodes -- 获取当前元素的子节点（包含空白的子节点）
+                element.children -- 获取当前元素的子节点(不包含空白) 比较实用
+                element.first/lastElementChild -- 获取当前元素第一个/最后一个子元素
+                element.nextElementSibing -- 获取当前元素的下一个兄弟元素
+                element.previousElementSibing -- 获取当前元素的前一个兄弟元素
+                element.parentNode -- 获取当前元素的父节点
+                element.tagName -- 获取当前元素的标签名
+      */
+
+      //获取#box里面所有的span元素
+      const box1 = document.getElementById("box1");
+      const spans = box1.getElementsByTagName("span");
+      console.log(box1);
+      console.log(spans.length);
+
+      const cns = box1.childNodes;
+      console.log(cns);
+      const children = box1.children;
+      console.log(children);
+    </script>
+  </body>
+</html>
