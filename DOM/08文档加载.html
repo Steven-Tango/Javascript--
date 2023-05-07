@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script defer src="./script/script.js"></script>
+    <!-- 
+      defer
+          - 延迟执行
+          - 等到当前文档执行完毕后加载
+          - 执行时机更早
+     -->
+  </head>
+  <body>
+    <script>
+      /*
+           网页时自上向下加载的，如果将js代码编写到网页的上边
+            js代码在执行时，网页还没有加载完毕，这时候会出现无法获取到DOM对象的情况
+            
+            window.onload 事件会在窗口中的内容加载完毕之后才触发
+            document的和DOMContentLoad事件会在当前文档加载完毕之后触发
+
+           如何解决：
+            1.将script标签编写到body的最后
+            2.将代码编写到window.onload的回调函数中
+            3.将代码编写到document对象的DOMContentLoaded的回调函数中(执行时机更早)
+            4.将代码编写到外部js文件，然后以defer形式引入
+        */
+
+      //window.onload=()=>{
+      //    const btn = document.getElementById("btn")
+      //    btn.onclick=()=>{alert("点我了")}
+      //}
+
+      //const btn = document.getElementById("btn");
+      //console.log(btn); //null
+      //btn.addEventListener("click", () => {
+      //  alert("点击无效");
+      //});//Cannot read properties of null (reading 'addEventListener')
+
+      //document.addEventListener("DOMContentLoaded", () => {
+      //  const btn = document.getElementById("btn");
+      //  console.log(btn);
+      //});
+    </script>
+    <button id="btn">点我一下</button>
+  </body>
+</html>
