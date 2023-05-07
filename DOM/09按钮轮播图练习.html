@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .outer {
+        width: 610px;
+        text-align: center;
+        margin: 20px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      window.onload = () => {
+        //获取img
+        const img = document.getElementsByTagName("img")[0];
+        //获取button
+        const prve = document.getElementById("prve");
+        const next = document.getElementById("next");
+
+        //创建数组存放图片路径
+        let imgArr = [
+          "./img/img1.png",
+          "./img/img2.png",
+          "./img/img3.png",
+          "./img/img4.png",
+        ];
+
+        //创建图片记录数
+        let imgCount = 0;
+
+        //设置图片张数显示
+        const info = document.getElementById("info");
+        info.textContent = `总共${imgArr.length}张,当前位于第${imgCount+1}张`;
+
+        //为button添加点击事件
+        //prve事件
+        prve.addEventListener("click", () => {
+          imgCount--;
+          if (imgCount < 0) {
+            imgCount = imgArr.length - 1;
+          }
+          img.src = imgArr[imgCount];
+          info.textContent = `总共${imgArr.length}张,当前位于第${imgCount+1}张`;
+        });
+        //next事件
+        next.addEventListener("click", () => {
+          imgCount++;
+          if (imgCount > imgArr.length - 1) {
+            imgCount = 0;
+          }
+          img.src = imgArr[imgCount];
+          info.textContent = `总共${imgArr.length}张,当前位于第${imgCount+1}张`;
+        });
+      };
+    </script>
+    <div class="outer">
+      <p id="info"></p>
+      <div class="img-wrapper">
+        <img src="./img/img1.png" alt="This is a image" />
+      </div>
+      <div class="button">
+        <button id="prve">Prve</button>
+        <button id="next">Next</button>
+      </div>
+    </div>
+  </body>
+</html>
