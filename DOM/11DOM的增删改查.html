@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">添加</button>
+    <button id="btn1">替换</button>
+    <hr />
+    <ul id="list">
+      <li id="zs">张三</li>
+      <li id="ls">李四</li>
+      <li id="ww">王五</li>
+    </ul>
+
+    <script>
+      /*
+            实现点击按钮添加一个人名
+        */
+      //获取ul
+      const list = document.getElementById("list");
+      //获取按钮
+      const btn = document.getElementById("btn");
+      //添加事件
+      btn.addEventListener("click", () => {
+        //创建li
+        const li = document.createElement("li");
+        //为li添加文本
+        li.textContent = "赵四";
+        //添加属性
+        li.id = "zs";
+        //将li标签添加到网页中
+        //list.appendChild(li);
+        /*
+            比appendChild()更灵活，可以向元素的任意位置添加元素
+            需要两个参数 1. 添加的位置  2.添加的元素
+                beforeend  标签的最后
+                afterend  标签的开始
+                beforebegin  元素的前边插入（兄弟元素）
+                afterbegin  元素的后边插入（兄弟元素）
+        */
+        list.insertAdjacentElement("beforeend", li);
+        list.insertAdjacentHTML("afterbegin", "<li id='lq'>李其</li>");
+      });
+
+      const btn1 = document.getElementById("btn1");
+      btn1.addEventListener("click", () => {
+        //创建一个唐杰替换张三
+        const li = document.createElement("li");
+        li.textContent = "唐杰";
+        li.id = "tj";
+        //获取张三
+        const zs = document.getElementById("zs");
+        //repalceWith() 使用一个元素替换当前元素
+        zs.replaceWith(li);
+        //remove() 删除当前元素
+        zs.remove();
+      });
+    </script>
+  </body>
+</html>
