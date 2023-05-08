@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      window.onload = () => {
+
+        //获取爱好
+        const hobbhies = document.getElementsByName("hobby");
+        //获取全选按钮
+        const all = document.getElementById("all");
+        //添加全选事件
+        all.addEventListener("click", () => {
+          for (i = 0; i < hobbhies.length; i++) {
+            hobbhies[i].checked = true;
+          }
+          checkedAll.checked = true;
+        });
+        //获取取消按钮
+        const noAll = document.getElementById("noAll");
+        //添加取消按钮事件
+        noAll.addEventListener("click", () => {
+          for (i = 0; i < hobbhies.length; i++) {
+            hobbhies[i].checked = false;
+          }
+          checkedAll.checked = false;
+        });
+        //获取反选按钮
+        const invert = document.getElementById("invert");
+        //田间反选按钮事件
+        invert.addEventListener("click", () => {
+          for (i = 0; i < hobbhies.length; i++) {
+            hobbhies[i].checked = !hobbhies[i].checked;
+            //if (hobbhies[i].checked == true) {
+            //  hobbhies[i].checked = false;
+            //} else {
+            //  hobbhies[i].checked = true;
+            //}
+          }
+          const checkedAllBox = document.querySelectorAll(
+              "[name=hobby]:checked"
+            );
+            if (hobbhies.length === checkedAllBox.length) {
+              checkedAll.checked = true;
+            } else {
+              checkedAll.checked = false;
+            }
+        });
+        //获取提交按钮
+        const submit = document.getElementById("submit");
+        //添加提交事件
+        submit.addEventListener("click", () => {
+          for (i = 0; i < hobbhies.length; i++) {
+            if (hobbhies[i].checked === true) {
+              console.log(hobbhies[i].value);
+            }
+          }
+        });
+        /*
+            checked-all
+                - 点击checked-all发生变化后，将小的checkbox和它同步
+            注意：在事件响应函数中，响应函数绑定给谁，this就是谁（箭头函数除外）
+        */
+        //获取大的全选按钮
+        const checkedAll = document.getElementById("checked-all");
+        //设置正向同步事件
+        checkedAll.addEventListener("change", () => {
+          for (i = 0; i < hobbhies.length; i++) {
+            hobbhies[i].checked = checkedAll.checked;
+          }
+        });
+        //设置逆向同步事件
+        //为每一个爱好按钮设置一个事件，如果所有的爱好按钮选中，则最大的全选按钮选中
+        for (i = 0; i < hobbhies.length; i++) {
+          hobbhies[i].addEventListener("change", () => {
+            //判断hobbies是否全选
+            const checkedAllBox = document.querySelectorAll(
+              "[name=hobby]:checked"
+            );
+            if (hobbhies.length === checkedAllBox.length) {
+              checkedAll.checked = true;
+            } else {
+              checkedAll.checked = false;
+            }
+          });
+        }
+      };
+    </script>
+    <div class="from">
+      <form action="#">
+        <div>
+          请选择你的兴趣爱好：
+          <input type="checkbox" id="checked-all" value="全选" />全选
+        </div>
+        <div>
+          <input type="checkbox" name="hobby" value="乒乓球" />乒乓球
+          <input type="checkbox" name="hobby" value="篮球" />篮球
+          <input type="checkbox" name="hobby" value="足球" />足球
+          <input type="checkbox" name="hobby" value="排球" />排球
+          <input type="checkbox" name="hobby" value="台球" />台球
+        </div>
+        <div>
+          <button type="button" id="all">全选</button>
+          <button type="button" id="noAll">取消</button>
+          <button type="button" id="invert">反选</button>
+          <button type="button" id="submit">提交</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
