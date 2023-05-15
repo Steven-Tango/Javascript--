@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box1 {
+        width: 100px;
+        height: 100px;
+        background-color: rgb(89, 165, 231);
+      }
+      .box1::after {
+        content: "Hello";
+        color: rgb(6, 239, 80);
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">修改样式</button><button id="btn1">读取样式</button>
+    <hr />
+    <div class="box1"></div>
+    <script>
+      /*
+            修改样式
+        */
+
+      //点击按钮后修改box1的宽度
+      const btn = document.getElementById("btn");
+      const box1 = document.querySelector(".box1");
+      //修改box1的样式  元素.style.样式名 = 样式值 如果样式名含有- 需要改写成驼峰命名
+      // background-color -- backgroundColor
+      btn.onclick = () => {
+        box1.style.width = 200 + "px";
+        box1.style.height = 200 + "px";
+        //box1.style.backgroundColor = "red";
+      };
+
+      /*
+            读取样式
+        */
+      const btn1 = document.getElementById("btn1");
+      btn1.onclick = () => {
+        /*
+                getComputedStyle()返回一个对象，这个对象中包含了当前元素所有生效的样式
+                    参数：
+                        1.要获取样式的对象
+                        2.要获取的伪元素
+                    返回值：
+                        返回的一个对象，对象中存储了当前元素的样式
+                    注意：
+                        样式对象中返回的样式值，不一定能拿来直接计算
+            */
+        const styleObj = getComputedStyle(box1);
+        console.log(styleObj.width);
+        console.log(styleObj.boxShadow);
+        const afterStyle = getComputedStyle(box1, "::after");
+        console.log(afterStyle.color);
+        let box = getComputedStyle(box1)
+        console.log(box.width)
+      };
+    </script>
+  </body>
+</html>
