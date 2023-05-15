@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .outer {
+        width: 400px;
+        margin: 100px auto;
+        text-align: center;
+      }
+      table {
+        width: 400px;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+      td,
+      th {
+        border: 1px solid black;
+        padding: 10px 0;
+      }
+      form div {
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <table>
+        <body>
+          <tr>
+            <th>姓名</th>
+            <th>邮箱</th>
+            <th>薪资</th>
+            <th>操作</th>
+          </tr>
+          <tr>
+            <td>张三</td>
+            <td>113@qd.com</td>
+            <td>3000</td>
+            <td><a href="javascript:;">删除</a></td>
+          </tr>
+          <tr>
+            <td>王五</td>
+            <td>134@df.com</td>
+            <td>4000</td>
+            <td><a href="javascript:;">删除</a></td>
+          </tr>
+          <tr>
+            <td>李四</td>
+            <td>342@qf.com</td>
+            <td>3400</td>
+            <td><a href="javascript:;">删除</a></td>
+          </tr>
+        </body>
+      </table>
+
+      <form action="#">
+        <div>
+          <label for="name">姓名</label>
+          <input type="text" id="name" />
+        </div>
+        <div>
+          <label for="email">邮箱</label>
+          <input type="text" id="email" />
+        </div>
+        <div>
+          <label for="salary">薪资</label>
+          <input type="text" id="salary" />
+        </div>
+        <button id="btn" type="button">添加</button>
+      </form>
+
+      <script>
+        /*
+            删除操作
+        */
+        function delEmp() {
+          //获取到tr对象
+          const tr = this.parentNode.parentNode;
+          //获取姓名
+          const empNameHandler = tr.firstElementChild.textContent;
+          //设置弹出框提示用户是否需要删除
+          if (confirm(`确定要删除【${empNameHandler}】嘛`)) {
+            //删除对应的数据
+            tr.remove();
+          }
+        }
+
+        //获取每个删除对象
+        const links = document.links;
+
+        //遍历每个删除对象
+        for (let i = 0; i < links.length; i++) {
+          //为每一个删除对象设置单击响应事件
+          links[i].onclick = delEmp;
+        }
+
+        /*
+            添加功能
+        */
+        //获取tbody
+        const tbody = document.querySelector("tbody");
+        //获取按钮
+        const btn = document.getElementById("btn");
+        btn.onclick = function () {
+          //获取表单中的值
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const salary = document.getElementById("salary").value;
+
+          //创建元素
+          const tr = document.createElement("tr");
+          //创建td
+          const nameTd = document.createElement("td");
+          const emialTd = document.createElement("td");
+          const salaryTd = document.createElement("td");
+
+          //添加文本
+          nameTd.textContent = name;
+          emialTd.textContent = email;
+          salaryTd.textContent = salary;
+
+          //将td添加至tr中
+          tr.appendChild(nameTd);
+          tr.appendChild(emialTd);
+          tr.appendChild(salaryTd);
+          tr.insertAdjacentHTML(
+            "beforeend",
+            '<td><a href="javascipt:;">删除</a></td>'
+          );
+
+          //将tr添加到tbody之后
+          tbody.appendChild(tr);
+
+          //由于上边的超链接是新添加的，所以上边并没有绑定单击响应函数 解决方式：为新添加的超链接单独绑定响应函数
+          links[links.length - 1].onclick = delEmp;
+        };
+      </script>
+    </div>
+  </body>
+</html>
