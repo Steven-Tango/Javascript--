@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button id="btn">添加</button>
+    <hr>
+    <ul id="list">
+        <li><a href="javascript:;">链接1</a></li>
+        <li><a href="javascript:;">链接2</a></li>
+        <li><a href="javascript:;">链接3</a></li>
+        <li><a href="javascript:;">链接4</a></li>
+    </ul>
+    <script>
+
+        /*
+            希望只绑定一次事件，就可以让所有的超链接（包括当前的和未来新建的都具有这些事件）
+
+            思路：
+                将事件统一绑定给document，这样点击超链接时由于事件冒泡，
+                会导致document上的点击事件被触发，这样只绑定一次，所有的超链接都会具有这样的事件
+
+            委派：
+                将本该绑定给多个元素的事件，统一绑定给document，这样可以降低代码的复杂度，方便维护
+        */
+
+        //const links = document.links;
+        const btn = document.getElementById("btn");
+        const list = document.getElementById("list");
+
+        //for (let i = 0; i < links.length; i++) {
+        //    links[i].addEventListener("click", event => {
+        //        alert(event.target.textContent)
+        //    })
+        //}
+
+        //获取list中的所有a
+        const links = document.getElementsByTagName("a");
+
+        document.addEventListener("click", e => {
+            //在执行代码之前，判断事件是由谁触发
+            //检查e.target 是否在links中
+            if ([...links].includes(e.target)) {
+                alert(e.target.textContent);
+            }
+        })
+
+        //点击按钮后，在ul中添加一个新的li
+        btn.addEventListener("click", () => {
+            list.insertAdjacentHTML("beforeend", "<li><a href='javascript:;'>新连接</a></li>");
+        })
+    </script>
+</body>
+
+</html>
