@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">Click</button>
+    <form action="#">
+        <input type="text" name="username">
+    </form>
+    <script>
+        const btn = document.getElementById("btn");
+        btn.addEventListener("click", () => {
+            /*
+                location 表示的是浏览器地址栏的信息
+                作用：
+                  - 直接将location的值修改成一个新地址
+                  - location.href 获取当前地址
+                  - location.assign() 跳转到新地址
+                  - location.replace() 跳转到新地址 -- 无法通过回退按钮回退
+                  - location.reload() 刷新当前页面 可以传递一个true，来进行强制清除缓存
+            */
+
+            //console.log(location.href)
+            //console.log(location.hostname)
+            //location = 'https://www.baidu.com'
+            //location.assign("https://www.baidu.com")
+            //location.replace("https://www.baidu.com") 无法通过通过回退按钮回退
+            location.reload()//true表示强制清除缓存
+        })
+    </script>
+</body>
+
+</html>
