@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      img {
+        vertical-align: top;
+      }
+      ul {
+        list-style: none;
+      }
+      .outer {
+        width: 610px;
+        height: 446px;
+        margin: 50px auto;
+      }
+      .img-list li {
+        position: absolute;
+        opacity: 0;
+        transition: all .8s;
+      }
+      li.current {
+        z-index: 1;
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <ul class="img-list">
+        <li class="current">
+          <a href="#">
+            <img src="../../DOM/img/img1.png" />
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="../../DOM/img/img2.png" />
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="../../DOM/img/img3.png" />
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="../../DOM/img/img4.png" />
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      /*
+        自动切换图片
+      */
+
+      //开启定时器
+      setTimeout(function auto() {
+        //获取当前显示的图片
+        const current = document.querySelector(".img-list .current");
+
+        //获取下一张图片 ||--> 是找True 前面满足条件就用前面的 前边没有就用后边的
+        const next = current.nextElementSibling || document.getElementsByTagName("li")[0];
+
+        // 切换显示状态
+        current.classList.remove("current");
+        next.classList.add("current");
+
+        setTimeout(auto, 1000);
+      }, 1000);
+    </script>
+  </body>
+</html>
