@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .outer {
+        width: 610px;
+        text-align: center;
+        margin: 20px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      window.onload = () => {
+        //获取img
+        const img = document.getElementsByTagName("img")[0];
+        //获取button
+        const prve = document.getElementById("prve");
+        const next = document.getElementById("next");
+
+        //创建数组存放图片路径
+        let imgArr = [
+          "../../DOM/img/img1.png",
+          "../../DOM/img/img2.png",
+          "../../DOM/img/img3.png",
+          "../../DOM/img/img4.png",
+        ];
+
+        //创建图片记录数
+        let imgCount = 0;
+
+        /*
+            实现图片自动轮播
+        */
+        const autoBtn = document.getElementById("autoBtn");
+
+        //储定时器的id
+        let timer;
+
+        autoBtn.onclick = ()=> {
+          //关闭定时器
+          clearTimeout(timer);
+          //开启定时器
+          timer = setTimeout(function auto() {
+            imgCount++;
+            if (imgCount > imgArr.length - 1) {
+              imgCount = 0;
+            }
+            img.src = imgArr[imgCount];
+            info.textContent = `总共${imgArr.length}张,当前位于第${
+              imgCount + 1
+            }张`;
+            timer = setTimeout(auto, 1000);
+          }, 1000);
+        }
+
+        //设置图片张数显示
+        const info = document.getElementById("info");
+        info.textContent = `总共${imgArr.length}张,当前位于第${imgCount + 1}张`;
+
+        //为button添加点击事件
+        //prve事件
+        prve.addEventListener("click", () => {
+          clearTimeout(timer);
+          imgCount--;
+          if (imgCount < 0) {
+            imgCount = imgArr.length - 1;
+          }
+          img.src = imgArr[imgCount];
+          info.textContent = `总共${imgArr.length}张,当前位于第${
+            imgCount + 1
+          }张`;
+        });
+        //next事件
+        next.addEventListener("click", () => {
+          clearTimeout(timer);
+          imgCount++;
+          if (imgCount > imgArr.length - 1) {
+            imgCount = 0;
+          }
+          img.src = imgArr[imgCount];
+          info.textContent = `总共${imgArr.length}张,当前位于第${
+            imgCount + 1
+          }张`;
+        });
+      };
+    </script>
+    <div class="outer">
+      <p id="info"></p>
+      <div class="img-wrapper">
+        <img src="../../DOM/img/img1.png" alt="This is a image" />
+      </div>
+      <div class="button">
+        <button id="prve">Prve</button>
+        <button id="autoBtn">Auto</button>
+        <button id="next">Next</button>
+      </div>
+    </div>
+  </body>
+</html>
